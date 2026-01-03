@@ -1,0 +1,15 @@
+##### pt.3 rules
+
+alert tcp any any -> 192.168.1.1 54321 (msg:"StudentID packet found!!"; content:"2021030001"; sid:1000001; rev:1;)
+
+alert tcp any any -> 192.168.1.2 [80,443,22,23,21,554,1433,3389,1883] (msg:"PORT SCAN activity detected on TCP!!"; sid:1000002; rev:1;)
+alert udp any any -> 192.168.1.2 53 (msg:"PORT SCAN activity detected on UDP!!"; sid:1000003; rev:1;)
+
+alert tcp any any -> 192.168.1.3 8080 (msg:"Base64 payload "2021030001-2021030007" DETECTED!"; content:"MjAyMTAzMDAwMS0yMDIxMDMwMDA3"; sid:1000004; rev:1;)
+
+alert udp any any -> any 53 (msg:"SUSPICIOUS DNS QUERY ergasiaMesa.StisGiortes.com"; content:"ergasiaMesa"; nocase; content:"StisGiortes"; nocase; content:"com"; nocase; sid:1000005; rev:1;)
+
+alert icmp any any -> 192.168.1.4 any (msg:"ICMP thelwNaFygw DETECTED"; itype:8; content:"thelwNaFygw"; sid:1000006; rev:1;)
+
+### pt.4 rules
+alert udp any any -> any 1434 (msg:"SLAMMER WORM DETECTED !"; content:"|04|"; content:"hkern"; content:"hGetT"; sid:1000007; rev:1;)
